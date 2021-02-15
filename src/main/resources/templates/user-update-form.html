@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<br>
+		<div class="container mt-2" style="max-width: 75%;">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card mb-2 mt-5"
+						style="background: #fff; border-radius: 2px; box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);">
+
+						<div class="container-fluid float-center">
+
+							<div th:if="${session.message}" class="container">
+								<div th:classappend="${'alert-'+session.message.type}"
+									class="alert my-auto text-center h5" role="alert">
+									<span th:text="${session.message.content}"></span>
+								</div>
+								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+							</div>
+
+
+
+							<h1 class="text-center mb-4 ">Update Form</h1>
+						</div>
+
+
+						<form action="" th:action="@{/update-user}" method="post"
+							th:object="${user}">
+							<input type="hidden" th:value="${user.id}" id="userId" name="id" />
+
+							<!--name field  -->
+							<div class="form-group">
+								<label for="name-field">Name</label> <input type="text"
+									name="name" class="form-control" id="name-field"
+									th:value="${user.name}">
+
+							</div>
+
+							<!--email field  -->
+							<div class="form-group">
+								<label for="email-field">Email</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupPrepend3">@</span>
+									</div>
+									<input type="email" name="email" class="form-control"
+										id="email-field" th:value="${user.email}">
+
+								</div>
+
+							</div>
+
+
+							<!--age field  -->
+							<div class="form-group">
+								<label for="name-field">Age</label> <input type="text"
+									name="age" class="form-control" id="name-field"
+									placeholder="Enter Your Age" th:value="${user.age}">
+
+							</div>
+							<!--about field -->
+							<div class="form-group mt-4">
+								<label for="text-field"> About You</label>
+								<textarea th:text="${user.about}" id="text-field" name="about"
+									rows="8" cols="" class="form-control"></textarea>
+							</div>
+
+							<!--button field  -->
+							<div class="container text-right">
+								<button type="submit" class="btn btn-primary text-white">update</button>
+								<button type="reset" class="btn btn-warning ml-2">reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <script>
+    $(document).ready(()=>{
+	 $(".nav-link").removeClass("active");
+     $("#signup-link").addClass("active"); 
+    });
+    </script> -->
+	</section>
+</body>
+</html>

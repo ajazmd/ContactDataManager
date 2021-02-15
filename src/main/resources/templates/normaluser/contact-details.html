@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normaluser/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="card ml-3 mr-3 mb-2" th:if="${contact}">
+			<div class="card-body text-center">
+				<div class="container text-center">
+					<img class="my-profpic mr-2" th:src="'/image/'+${contact.image}"
+						alt="profile_photo" style="height: 200px; width: 200px;">
+					<h2 class="mt-2 mb-3">
+						<span th:text="${contact.name}"></span> ( <span
+							th:text="${contact.nickName}"></span> )
+					</h2>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#ID</th>
+								<th scope="col">SCMUSER-<span th:text="${contact.cId}"></span></th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+								<td><span th:text="${contact.email}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Phone</th>
+								<td><span th:text="${contact.phone}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Work</th>
+								<td><span th:text="${contact.work}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="desc mt-3">
+					<div class="h3" th:text="${contact.name}+' Description'"></div>
+					<th:block th:utext="${contact.desc}"></th:block>
+
+				</div>
+				<div class="container mt-3">
+					<form th:action="@{'/user/update/'+${contact.cId}}" method="post">
+						<button type="submit"
+							class="btn bg-primary btn-block text-bold text-white text-uppercase">update</button>
+					</form>
+					<form th:action="@{'/user/delete/'+${contact.cId}}" method="post">
+						<button type="submit"
+							class="btn bg-danger btn-block text-bold text-white text-uppercase mt-1">delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<h2 class="text-center" th:unless="${contact}">You cannot access
+			other's contacts Please reassure your contact</h2>
+	</section>
+</body>
+</html>

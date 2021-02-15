@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="login-form" style="width: 500px;">
+			<form th:action="@{/contact}" method="post" th:object="${contactUs}">
+				<h2 class="text-center text-dark">Contact Us</h2>
+				<div class="form-group row">
+					<label for="inputname" class="col-sm-2 col-form-label">Name</label>
+					<div class="col-sm-10">
+						<input type="text" name="name" class="form-control" id="inputname"
+							th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+							th:value="${contactUs.name}" placeholder="Enter Full Name">
+						<div class="invalid-feedback"
+							th:each="e: ${#fields.errors('name')}" th:text="${e}"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputemail" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="text" name="email" class="form-control"
+							id="inputemail" placeholder="Enter Email" required maxlength="45"
+							th:value="${contactUs.email}"
+							th:classappend="${#fields.hasErrors('email')?'is-invalid':''}">
+						<div class="invalid-feedback"
+							th:each="e: ${#fields.errors('email')}" th:text="${e}"></div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputsubject" class="col-sm-2 col-form-label">Subject</label>
+					<div class="col-sm-10">
+						<input type="text" name="subject" class="form-control"
+							id="inputsubject" placeholder="How can we help you" required
+							maxlength="100">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputcontent" class="col-sm-2 col-form-label">Content</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" name="content" id="inputcontent"
+							rows="5"></textarea>
+					</div>
+				</div>
+				<div class="form-group text-right my-0">
+					<button type="submit"
+						class="btn bg-info text-white text-bolder btn-lg">SEND</button>
+
+				</div>
+			</form>
+		</div>
+		<script>
+$(document).ready(()=>{
+	$(".nav-link").removeClass("active");
+    $("#contact-link").addClass("active"); 
+});
+</script>
+	</section>
+</body>
+</html>

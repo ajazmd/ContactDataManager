@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normaluser/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<span th:text="${billDto.amount}"> </span>
+		<h1>User Payment Page</h1>
+		<script>
+$(document).ready(()=>{
+	$(".nav-link").removeClass("active");
+    $("#support-link").addClass("active"); 
+});
+</script>
+	</section>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normaluser/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section
+		class="banner1 d-flex justify-content-center align-items-center">
+		<div class="card">
+			<div class="card-body">
+				<div class="text-center">
+					<h1 class="font-weight-bolder text-serif">
+						<span class="text-dark">Hello,</span> <span
+							style="color: seagreen" th:text="${user.name}"></span>
+					</h1>
+					<h2 class="mt-3 text-dark">Welcome to the world of saving your
+						contacts on cloud!</h2>
+					<p class="text-capitalize font-italic h5 text-secondary mb-0">start
+						adding your contacts on cloud...</p>
+					<div id="divider"></div>
+					<a class="btn btn-lg mt-4 btn-outline-success" role="button"
+						th:href="@{/user/addcontact}">add here</a>
+				</div>
+			</div>
+		</div>
+		<script>
+$(document).ready(()=>{
+	$(".item").removeClass("active");
+    $("#home-link").addClass("active"); 
+});
+</script>
+	</section>
+</body>
+</html>
