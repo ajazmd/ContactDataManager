@@ -28,6 +28,50 @@ body {
 	margin-left: 10%;
 }
 
+/*banner for 404 error */
+.banner2 {
+	width: 100%;
+	height: 93vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+		url(../image/404.jpg);
+	background-size: cover;
+	color: white;
+	background-position: center;
+}
+
+/*banner for 500 error  */
+.banner3 {
+	width: 100%;
+	height: 93vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+		url(../image/500.jpeg);
+	background-size: cover;
+	color: white;
+	background-position: center;
+}
+
+/*banner for 403 error  */
+.banner4 {
+	width: 100%;
+	height: 93vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+		url(../image/cross.png);
+	background-size: cover;
+	color: white;
+	background-position: center;
+}
+
+/*banner for 400 error  */
+.banner5 {
+	width: 100%;
+	height: 93vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+		url(../image/400.jpg);
+	background-size: cover;
+	color: white;
+	background-position: center;
+}
+
 /* Style navbar  */
 .navbar-brand {
 	text-shadow: 2px 2px 4px #000000;

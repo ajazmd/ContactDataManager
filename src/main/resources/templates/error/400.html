@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<link href='https://fonts.googleapis.com/css?family=Sofia'
+	rel='stylesheet'>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section
+		class="banner5 d-flex justify-content-center align-items-center">
+		<div class="text-center">
+			<h1 class="font-weight-bold text-serif text-danger h1"
+				style="font-family: helvetica">Oops,something went wrong!</h1>
+			<div class="divider mt-0"></div>
+
+
+			<div th:if="${session.message}" class="container mt-3">
+				<div th:classappend="${'alert-'+session.message.type}"
+					class="alert my-auto text-center h4" role="alert">
+					<span th:text="${session.message.content}"></span>
+				</div>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+		</div>
+
+
+		<script>
+</script>
+	</section>
+</body>
+</html>

@@ -80,7 +80,7 @@ public class HomeController {
 	//Show login page and preventing user going back to login if already logged in
 	@GetMapping("/login")
 	public String showLogin(Model model) {
-		model.addAttribute("title", "Login-Smart Cantact Manager");
+		model.addAttribute("title", "Login-Contact Data Manager");
 		Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
 		if(authentication==null||authentication instanceof AnonymousAuthenticationToken)
 			return"login";
