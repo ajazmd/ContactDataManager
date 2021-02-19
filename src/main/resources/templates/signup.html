@@ -2,8 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	th:replace="base::layout(~{::section})">
 <head>
+
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>reCAPTCHA demo: Simple page</title>
 </head>
 <body>
 	<section>
@@ -23,7 +24,7 @@
 								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 							</div>
 
-
+							
 							<h1 class="text-center mb-4 ">Register Here</h1>
 
 						</div>
@@ -125,11 +126,15 @@
 									th:each="e: ${#fields.errors('agreement')}" th:text="${e}"></div>
 
 							</div>
+							<div class="g-recaptcha" data-theme="dark" data-size="normal"
+								data-sitekey="6Lfz810aAAAAAKxEGNrHmoPIGiz3YzMamCjdErYv"></div>
+								<div th:text="${invalidCaptcha}" style="color:red"></div>
 							<!--button field  -->
 							<div class="container text-right">
 								<button type="submit" class="btn btn-primary text-white">register</button>
 								<button type="reset" class="btn btn-warning ml-2">reset</button>
 							</div>
+
 						</form>
 					</div>
 				</div>

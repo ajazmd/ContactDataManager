@@ -19,25 +19,29 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.smart.dao.UserRepository;
 import com.smart.entities.User;
 import com.smart.entities.UserUpdate;
 import com.smart.helper.MessageErrorType;
+import com.smart.validator.CaptchaValidator;
 import com.smart.validator.EmailValidator;
 import com.smart.validator.PasswordValidator;
 
 
 
 @Controller
-@SessionAttributes("user")
 public class HomeController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private CaptchaValidator validator;
 
 
 
@@ -58,22 +62,30 @@ public class HomeController {
 
 	//Submit registration form
 	@PostMapping("/processingRegister")
-	public String handleRegistration(@Valid @ModelAttribute("user") User user,
-			BindingResult result, Model model,HttpSession session
+	public String handleRegistration(@RequestParam ("g-recaptcha-response") String captcha,@Valid @ModelAttribute("user") User user,
+			BindingResult result,
+			Model model,HttpSession session
 			) {
 		if(result.hasErrors()) {
 			System.out.println(result.toString());
 			model.addAttribute("user", user);
-			session.setAttribute("message", new MessageErrorType("Try again by following the given guidelines","danger"));
+			session.setAttribute("message1", new MessageErrorType("Try again by following the given guidelines","danger"));
 			return "signup";
 		}
-		user.setRole("ROLE_USER");
-		user.setImageUrl("default.png");
-		user.setEnabled(true);
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		User data =userRepository.save(user);
-		session.setAttribute("message", new MessageErrorType(user.getName().toUpperCase()+" , Successfully registered!","success"));
-		return "signup";
+		if (validator.isValid(captcha)) {
+			user.setRole("ROLE_USER");
+			user.setImageUrl("default.png");
+			user.setEnabled(true);
+			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+			User data =userRepository.save(user);
+			session.setAttribute("message1", "Successfully registered!");
+			return "login";
+		}
+		else {
+			model.addAttribute("invalidCaptcha", "Please validate the captcha");
+			return "signup";
+		}
+
 
 	}
 

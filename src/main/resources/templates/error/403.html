@@ -10,20 +10,18 @@
 <body>
 	<section
 		class="banner4 d-flex justify-content-center align-items-center">
-		<div class="text-center mt-5">
-			<h1 class="font-weight-bold text-serif mt-4"
-				style="color: darkkhaki; font-family: helvetica">Oops,something went wrong </h1>
+		<div class="text-center">
+			<h1 class="font-weight-bold text-serif text-danger h1"
+				style="font-family: helvetica">Oops,something went wrong!</h1>
 			<div class="divider mt-0"></div>
-			<pre class="text-white text-serif">Start collecting your contacts in very smarter way. We provide very convenient and efficient way of handling contacts
-Encapsulating cutting-edge era for smoother maintenance and diagnosis to whom , who absorb details for a short period</pre>
-			<a
-				class="btn btn-outline-warning btn-lg font-italic text-secondary mt-4"
-				role="button" th:href="@{/signup}">Let's Get Started</a>
-			<div class="container mt-3">
-				<p class="text-center small">
-					Already have an account! <a href="#" th:href="@{/login}">Sign
-						in here</a>.
-				</p>
+
+
+			<div th:if="${session.message}" class="container mt-3">
+				<div th:classappend="${'alert-'+session.message.type}"
+					class="alert my-auto text-center h4" role="alert">
+					<span th:text="${session.message.content}"></span>
+				</div>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 			</div>
 		</div>
 

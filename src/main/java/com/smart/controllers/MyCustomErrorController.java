@@ -44,23 +44,17 @@ public class MyCustomErrorController implements ErrorController {
 				title="Internal Server Error";
 				errorPage="error/500";
 				logger.error("Error 500");
-				session.setAttribute("message", new MessageErrorType("Sorry! The the server has encountered a problem", "danger"));
+				session.setAttribute("message", new MessageErrorType("Sorry! The server has encountered a problem", "danger"));
 
 			}
 			else if(statusCode==HttpStatus.FORBIDDEN.value()) {
-				title="Forbidden errror";
+				title="Forbidden error";
 				errorPage="error/403";
 				logger.error("Error 403");
 				session.setAttribute("message", new MessageErrorType("You don't have permission to see this", "danger"));
 
 			}
-			else if(statusCode==HttpStatus.BAD_REQUEST.value()) {
-				title="Forbidden errror";
-				errorPage="error/400";
-				logger.error("Error 400");
-				session.setAttribute("message", new MessageErrorType("Please make a valid request", "danger"));
 
-			}
 		}
 		model.addAttribute("title", title);
 		return errorPage;

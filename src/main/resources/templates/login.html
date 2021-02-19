@@ -16,6 +16,13 @@
 					</div>
 					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 				</div>
+				<div th:if="${session.message1}" class="container">
+					<div th:classappend="alert-success"
+						class="alert my-auto mt-0 text-center h5" role="alert">
+						<span th:text="${session.message1}"></span>
+					</div>
+					<th:block th:text="${#session.removeAttribute('message1')}"></th:block>
+				</div>
 				<div th:if="${param.logout}"
 					class="alert alert-success text-center h5">You have been
 					successfully logged out</div>
