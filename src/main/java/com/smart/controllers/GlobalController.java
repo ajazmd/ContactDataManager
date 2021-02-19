@@ -14,7 +14,7 @@ public class GlobalController{
 		}
 	@ExceptionHandler(value=IllegalStateException.class)
 	public String handleIllegalStateException(Model model) {
-		model.addAttribute("expmsg", "Illegal state exception has occured");
+		model.addAttribute("expmsg", "Illegal states exception has occured");
 		return "globalexception";
 	}
 	@ExceptionHandler(value=NumberFormatException.class)
