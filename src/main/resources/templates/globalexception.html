@@ -13,11 +13,12 @@
 		<div class="text-center">
 			<h1 class="font-weight-bold text-serif text-danger h1"
 				style="font-family: helvetica">Something went wrong...</h1>
-			<div class="divider mt-0"></div>
+				
+			<div class="divider mt-3"></div>
 			<table class="table table-bordered">
 				<thead>
-					<tr class="bg-danger">
-						<th scope="row">${expmsg}</th>
+					<tr class="bg-danger h3">
+						<td th:text="${expmsg}"></td>
 					</tr>
 				</thead>
 				</table>
