@@ -53,8 +53,8 @@
 				</div>
 
 				<!-- pagination part -->
-				<nav aria-label="Page navigation example">
-					<div class="h4">
+				<nav th:if="${totalElements>0}" aria-label="Page navigation example">
+					<div  class="h4">
 						Total Contacts: [[${totalElements}]] - Page <span
 							class="text-primary">[[${currentPage+1}]]</span> of
 						[[${totalPages}]]
