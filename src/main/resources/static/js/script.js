@@ -19,7 +19,7 @@ const search=()=>{
    let query=$("#search-input").val();
    console.log(query);
   if(query==''){
-    $(".search-result").hide();
+    $(".search-result").hide("slow");
    }
   else{
     console.log(query);
@@ -36,7 +36,7 @@ const search=()=>{
     })
     text += `</div>`;
     $(".search-result").html(text);
-    $(".search-result").show();
+    $(".search-result").show("fast");
     });
   }
  };
