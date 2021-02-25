@@ -62,7 +62,7 @@ public class HomeController {
 
 	//Submit registration form
 	@PostMapping("/processingRegister")
-	public String handleRegistration(@RequestParam ("g-recaptcha-response") String captcha,@Valid @ModelAttribute("user") User user,
+	public String handleRegistration(@Valid @ModelAttribute("user") User user,
 			BindingResult result,
 			Model model,HttpSession session
 			) {
@@ -72,7 +72,6 @@ public class HomeController {
 			session.setAttribute("message1", new MessageErrorType("Try again by following the given guidelines","danger"));
 			return "signup";
 		}
-		if (validator.isValid(captcha)) {
 			user.setRole("ROLE_USER");
 			user.setImageUrl("default.png");
 			user.setEnabled(true);
@@ -81,13 +80,7 @@ public class HomeController {
 			session.setAttribute("message1", "Successfully registered!");
 			return "login";
 		}
-		else {
-			model.addAttribute("invalidCaptcha", "Please validate the captcha");
-			return "signup";
-		}
 
-
-	}
 
 	//Show login page and preventing user going back to login if already logged in
 	@GetMapping("/login")
