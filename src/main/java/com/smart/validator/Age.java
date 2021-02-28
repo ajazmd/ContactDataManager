@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Target(ElementType.FIELD)
 public @interface Age {
 	String message() default "*Your age must lie between {lower}-{upper}";
-	int lower() default 18;
+	int lower() default 10;
 	int upper() default 60;
 	Class<?>[] groups() default { };
 

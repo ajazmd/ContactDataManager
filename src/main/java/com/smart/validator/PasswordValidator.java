@@ -1,5 +1,8 @@
 package com.smart.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -15,8 +18,11 @@ public class PasswordValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user=((User)target);
-		if(user.getPassword().length()>8) {
-			errors.rejectValue("password", "password.invalid", "Enter more than 7 character");
+		String regex="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher m=pattern.matcher(user.getPassword());
+		if(!m.matches()) {
+			errors.rejectValue("password", "password.invalid", "Read the instructions and enter valid input");
 		}
 
 

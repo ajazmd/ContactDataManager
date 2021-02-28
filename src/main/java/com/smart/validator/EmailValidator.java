@@ -15,8 +15,8 @@ public class EmailValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user=(User)target;
-		if(!user.getEmail().endsWith("@gmail.com")) {
-			errors.rejectValue("email", "email.invalidstring","*String must ends with @gmail.com");
+		if(!user.getEmail().endsWith(".com")) {
+			errors.rejectValue("email", "email.invalidstring","*String must ends with .com");
 		}
 
 
