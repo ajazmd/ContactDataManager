@@ -24,7 +24,7 @@
 								<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 							</div>
 
-							
+
 							<h1 class="text-center mb-4 ">Register Here</h1>
 
 						</div>
@@ -69,6 +69,11 @@
 									th:classappend="${#fields.hasErrors('password')?'is-invalid':''}">
 								<div class="invalid-feedback"
 									th:each="e: ${#fields.errors('password')}" th:text="${e}"></div>
+								<small id="emailHelp" class="form-text text-muted">Password
+									should be at least eight (8) characters in length where the
+									system can support it. Passwords must include characters from
+									at least two (2) of these groupings: alpha, numeric, and
+									special characters. </small>
 							</div>
 							<!--gender field  -->
 							<div class="form-group">
