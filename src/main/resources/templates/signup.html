@@ -72,7 +72,7 @@
 								<small id="emailHelp" class="form-text text-muted">Password
 									should be at least eight (8) characters in length where the
 									system can support it. Passwords must include characters from
-									at least two (2) of these groupings: alpha, numeric, and
+									at least one (1) of these groupings: alpha, numeric, and
 									special characters. </small>
 							</div>
 							<!--gender field  -->
@@ -131,9 +131,10 @@
 									th:each="e: ${#fields.errors('agreement')}" th:text="${e}"></div>
 
 							</div>
-							<!-- <div class="g-recaptcha" data-theme="dark" data-size="normal"
+							<!-- racaptcha field -->
+							 <div class="g-recaptcha" data-theme="dark" data-size="normal"
 								data-sitekey="6Lfz810aAAAAAKxEGNrHmoPIGiz3YzMamCjdErYv"></div>
-								<div th:text="${invalidCaptcha}" style="color:red"></div> -->
+								<div th:text="${invalidCaptcha}" style="color:red"></div>
 							<!--button field  -->
 							<div class="container text-right">
 								<button type="submit" class="btn btn-primary text-white">register</button>
